@@ -1,15 +1,19 @@
 import React from 'react'
-import { Link, NavLink, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 const navBarComponent = () => {
     return (
-        <nav className="navbar transparent navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-dark bg-primary">
             <Link className="navbar-brand" to="/"><i className="fas fa-newspaper"></i>NewsTime</Link> 
             <div className="navbar-collapse collapse w-100" id="collapsingNavbar3">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
                 <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <NavLink className="nav-link" exact to="/">Home</NavLink>
-                    </li>
+                    </li> */}
                 </ul>
                 <ul className="nav navbar-nav ml-auto w-100 justify-content-end">
                     

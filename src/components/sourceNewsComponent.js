@@ -1,33 +1,25 @@
-import React, { Component } from 'react'
-//import { connect } from 'react-redux'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';  
 
-class homeComponent extends Component {
-    //we can initialize state by using constructor
+class sourceNewsComponent extends Component {
     constructor(props) {
-        super(props); //super initialize 'this' keyword
-        //pass props to super to use props in constructor
-    
+        super(props);
         this.state = {
-            headlines: [],
+            headlines: []
         };
     }
-    // didMount first execute when component created
+    
     componentDidMount(){
-        //get top headlines using axios
-        axios.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=2f18a46c3eea4f1fb7380121f6d42f55') //it return promise
+        const srcID = this.props.match.params.src_id;
+        axios.get(`https://newsapi.org/v2/top-headlines?sources=${srcID}&apiKey=2f18a46c3eea4f1fb7380121f6d42f55`)
             .then(res => { //handle promise
                 this.setState({
                     //update state acc to result
                     headlines: res.data.articles
                 })
             })
-    } 
-
+    }
     render() {
-        // check state and its properties 
-        //console.log(this.state.headlines)
-
         //create object with jsx
         const headline =  this.state.headlines.length ? (
             this.state.headlines.map(headline => {
@@ -60,17 +52,15 @@ class homeComponent extends Component {
                 <p className="center">loading...</p>
             </div>
         )
-
-        return(
+        return (
             <div className="container home center">
-                <h5 className="center">Todays Headlines</h5>
+                <h5 className="center">Headlines from {this.props.match.params.src_id}</h5>
                 <div class="row">
                     {headline}
                 </div>
             </div>
-        )
+        );
     }
 }
 
-  
-export default homeComponent
+export default sourceNewsComponent;
