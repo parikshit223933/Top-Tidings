@@ -12,3 +12,9 @@
     padding-right: 5px;
     border-radius: 20%;
 }
+.searchBar {
+    background-color: white;
+    color: black;
+    width: 500px;
+    margin-left: 380px;
+}

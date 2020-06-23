@@ -1,25 +1,14 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import SearchBar from './searchBarComponent';
 
 const navBarComponent = () => {
     return (
-        <nav className="navbar navbar-dark bg-primary">
-            <Link className="navbar-brand" to="/"><i className="fas fa-newspaper"></i>NewsTime</Link> 
-            <div className="navbar-collapse collapse w-100" id="collapsingNavbar3">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                    {/* <li className="nav-item">
-                        <NavLink className="nav-link" exact to="/">Home</NavLink>
-                    </li> */}
-                </ul>
-                <ul className="nav navbar-nav ml-auto w-100 justify-content-end">
-                    
-                </ul>
-            </div>
+        <nav className="navbar navbar-expand-lg  bg-primary">
+            <Link to="/"><span className="navbar-brand">TopTidings</span></Link>
+                <SearchBar />
         </nav>
+        
     )
 }
 

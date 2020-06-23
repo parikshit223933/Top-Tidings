@@ -5,6 +5,7 @@ const categoriesComponent = () => {
     return (
         <div className="center">
             <br />
+            <h4>Top headlines from your favourite category</h4>
             <Link to='/category/general'><button className="ctg-btn">General</button></Link>
             <Link to='/category/business'><button className="ctg-btn">Business</button></Link>
             <Link to='/category/health'><button className="ctg-btn">Health</button></Link>

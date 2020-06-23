@@ -23,7 +23,7 @@ class categeoryNewsComponent extends Component {
 
     render() {
         return (
-            <div className="container home center">
+            <div className="container categ center">
                 <h5 className="center">Headlines from {this.props.match.params.ctg_name}</h5>
                 <div class="row">
                     <ShowNews headlines={this.state.headlines} />

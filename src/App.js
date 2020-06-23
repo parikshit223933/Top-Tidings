@@ -6,7 +6,8 @@ import Sources from './components/sourcesComponent'
 import Categories from './components/categoriesComponent'
 import Home from './components/homeComponent'
 import SourceNews from './components/sourceNewsComponent'
-import CategoryNews from './components/categoryNewsComponent';
+import CategoryNews from './components/categoryNewsComponent'
+import SearchNews from './components/searchNewsComponent'
 
 class App extends Component {
     render() {
@@ -29,6 +30,8 @@ class App extends Component {
                     {/* exact path is used, otherwise it will also show those pages where sub route matches with their route. 
                         Eg:- for route /about here both / & /about matches and react open both pages */}
                     
+                    <Route path='/search/:query' component={SearchNews} />
+
                     <Route path='/source/:src_id' component={SourceNews} />
                     
                     <Route path='/category/:ctg_name' component={CategoryNews} />
