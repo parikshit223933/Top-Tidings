@@ -10,8 +10,7 @@ class searchNewsComponent extends Component {
         }
     }
 
-    componentDidMount(){
-        const query = this.props.match.params.query;
+    getData = (query) => {
         axios.get(`https://newsapi.org/v2/top-headlines?q=${query}&language=en&apiKey=2f18a46c3eea4f1fb7380121f6d42f55`)
             .then(res => {
                 console.log(res);
@@ -20,6 +19,18 @@ class searchNewsComponent extends Component {
                     headlines: res.data.articles
                 })
             })
+    }
+
+    componentDidMount(){
+        const query = this.props.match.params.query;
+        this.getData(query);
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(this.props.match.params.query !== nextProps.match.params.query){
+            const query = nextProps.match.params.query;
+            this.getData(query);
+        }
     }
     
     render() {

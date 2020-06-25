@@ -9,9 +9,8 @@ class sourceNewsComponent extends Component {
             headlines: []
         };
     }
-    
-    componentDidMount(){
-        const srcID = this.props.match.params.src_id;
+
+    getData = (srcID) => {
         axios.get(`https://newsapi.org/v2/top-headlines?sources=${srcID}&apiKey=2f18a46c3eea4f1fb7380121f6d42f55`)
             .then(res => { //handle promise
                 this.setState({
@@ -19,6 +18,18 @@ class sourceNewsComponent extends Component {
                     headlines: res.data.articles
                 })
             })
+    }
+    
+    componentDidMount(){
+        const srcID = this.props.match.params.src_id;
+        this.getData(srcID);
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(this.props.match.params.src_id !== nextProps.match.params.src_id){
+            const srcID = nextProps.match.params.src_id;
+            this.getData(srcID);
+        }
     }
 
     render() {

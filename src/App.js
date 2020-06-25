@@ -11,35 +11,35 @@ import SearchNews from './components/searchNewsComponent'
 
 class App extends Component {
     render() {
-      return (
-        <BrowserRouter>
-            <div className="App">
-                <Navbar />
-                
-                <Sources />
-
-                <Categories />
-
-                {/* Switch tag check route one by one and if matches 
-                    then show that component and will not check other route */}
-                <Switch>
-                    {/* By using Route, the component has access to this.props.history 
-                    so it can redirect the user with this.props.history.push. */}
+        return (
+            <BrowserRouter>
+                <div className="App">
+                    <Navbar />
                     
-                    <Route exact path='/' component={Home}/> 
-                    {/* exact path is used, otherwise it will also show those pages where sub route matches with their route. 
-                        Eg:- for route /about here both / & /about matches and react open both pages */}
-                    
-                    <Route path='/search/:query' component={SearchNews} />
+                    <Sources />
 
-                    <Route path='/source/:src_id' component={SourceNews} />
-                    
-                    <Route path='/category/:ctg_name' component={CategoryNews} />
-                </Switch>
-            </div>
-        </BrowserRouter>
-      );
+                    <Categories />
+
+                    {/* Switch tag check route one by one and if matches 
+                        then show that component and will not check other route */}
+                    <Switch>
+                        {/* By using Route, the component has access to this.props.history 
+                        so it can redirect the user with this.props.history.push. */}
+                        
+                        <Route exact path='/' component={Home}/> 
+                        {/* exact path is used, otherwise it will also show those pages where sub route matches with their route. 
+                            Eg:- for route /about here both / & /about matches and react open both pages */}
+                        
+                        <Route path='/search/:query' component={SearchNews} />
+
+                        <Route path='/source/:src_id' component={SourceNews} />
+                        
+                        <Route path='/category/:ctg_name' component={CategoryNews} />
+                    </Switch>
+                </div>
+            </BrowserRouter>
+        );
     }
-  }
+}
 
 export default App;

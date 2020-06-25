@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 
-const categoriesComponent = () => {
+const categoriesComponent = (props) => {
     return (
         <div className="center">
             <br />
