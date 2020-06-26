@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const showNewsComponent = (props) => {
+    console.log(props);
     return (
         props.headlines.length ? (
             props.headlines.map(headline => {
                 return(
-                    <div className="col-xl-4 col-sm-6 col-sm-12 d-flex align-items-stretch" key="headline.publishedAt">
+                    <div className="col-xl-4 col-sm-6 d-flex align-items-stretch" key="headline.publishedAt">
                         <div className="card booking-card">
                             <div className="view overlay">
                                 <img id="indexcardimage" className="card-img-top" src={headline.urlToImage} alt="img" />
@@ -36,4 +38,11 @@ const showNewsComponent = (props) => {
     );
 }
 
-export default showNewsComponent;
+//take data from redux store to components prop
+const mapStateToProps = (state) => {
+    return {
+      headlines: state.headlines
+    }
+}
+
+export default connect(mapStateToProps)(showNewsComponent);

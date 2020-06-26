@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-//import { connect } from 'react-redux'
-import axios from 'axios'
+import { connect } from 'react-redux'
 import ShowNews from './showNewsComponent';
+import { homeAction } from '../actions/myAction';
 
 class homeComponent extends Component {
     //we can initialize state by using constructor
@@ -15,14 +15,8 @@ class homeComponent extends Component {
     }
     // didMount first execute when component created
     componentDidMount(){
-        //get top headlines using axios
-        axios.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=2f18a46c3eea4f1fb7380121f6d42f55') //it return promise
-            .then(res => { //handle promise
-                this.setState({
-                    //update state acc to result
-                    headlines: res.data.articles
-                })
-            })
+        console.log(this.props.getHomeNews())
+        this.props.getHomeNews();
     } 
 
     render() {
@@ -30,12 +24,18 @@ class homeComponent extends Component {
             <div className="container home center">
                 <h5 className="center">Todays Headlines</h5>
                 <div class="row">
-                    <ShowNews headlines={this.state.headlines}/>
+                    <ShowNews />
                 </div>
             </div>
         )
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+      getHomeNews: () => dispatch(homeAction())
+    }
+}
+
   
-export default homeComponent
+export default connect(null, mapDispatchToProps)(homeComponent)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
 import ShowNews from './showNewsComponent';
+import { queryAction } from '../actions/myAction';
 
 class searchNewsComponent extends Component {
     constructor(props) {
@@ -10,26 +11,17 @@ class searchNewsComponent extends Component {
         }
     }
 
-    getData = (query) => {
-        axios.get(`https://newsapi.org/v2/top-headlines?q=${query}&language=en&apiKey=2f18a46c3eea4f1fb7380121f6d42f55`)
-            .then(res => {
-                console.log(res);
-                this.setState({
-                    //update state
-                    headlines: res.data.articles
-                })
-            })
-    }
-
+    //when component rendered this method will be first evoked 
     componentDidMount(){
         const query = this.props.match.params.query;
-        this.getData(query);
+        this.props.getQueryNews(query);
     }
-
+    
+    //if component is already mounted and only route parameter change 
     componentWillReceiveProps(nextProps){
         if(this.props.match.params.query !== nextProps.match.params.query){
             const query = nextProps.match.params.query;
-            this.getData(query);
+            this.props.getQueryNews(query);
         }
     }
     
@@ -45,4 +37,10 @@ class searchNewsComponent extends Component {
     }
 }
 
-export default searchNewsComponent;
+const mapDispatchToProps = (dispatch) => {
+    return {
+      getQueryNews: (query) => dispatch(queryAction(query))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(searchNewsComponent);

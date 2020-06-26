@@ -1,22 +1,38 @@
 const initState = {
-    posts: [
-        {id: '1', title: 'Squirtle Laid an Egg', body: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur voluptate laborum perferendis, enim repellendus ipsam sunt autem at odit dolorum, voluptatum suscipit iste harum cum magni itaque animi laudantium fugiat'},
-        {id: '2', title: 'Charmander Laid an Egg', body: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur voluptate laborum perferendis, enim repellendus ipsam sunt autem at odit dolorum, voluptatum suscipit iste harum cum magni itaque animi laudantium fugiat'},
-        {id: '3', title: 'a Helix Fossil was Found', body: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur voluptate laborum perferendis, enim repellendus ipsam sunt autem at odit dolorum, voluptatum suscipit iste harum cum magni itaque animi laudantium fugiat'}
-    ]
+    headlines: []
 }
   
 const rootReducer = (state = initState, action) => {
-    if(action.type === 'DELETE_POST'){
-        let newPosts = state.posts.filter(post => {
-          return post.id !== action.id
-        });
+    if(action.type === 'CATEGORY_NEWS'){
         return {
-          ...state,
-          posts: newPosts
+            ...state,
+            headlines: action.payload
         }
     }
-    return state;
+    
+    else if(action.type === 'SOURCE_NEWS'){
+        return {
+            ...state,
+            headlines: action.payload
+        }
+        
+    }
+
+    else if(action.type === 'SEARCH_NEWS'){
+        return {
+            ...state,
+            headlines: action.payload
+        }
+    }
+
+    else if(action.type === 'HOME_NEWS'){
+        return {
+            ...state,
+            headlines: action.payload
+        }
+    }
+    
+    return state
 }
   
 export default rootReducer
