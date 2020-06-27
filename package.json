@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/tushar1999sharma/Top-Tidings/issues"
   },
-  "homepage": "https://github.com/tushar1999sharma/Top-Tidings#readme"
+  "homepage": "https://github.com/tushar1999sharma/Top-Tidings#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.9.20"
+  }
 }
