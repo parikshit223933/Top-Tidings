@@ -1,5 +1,5 @@
 const mongoose      = require('mongoose');
-const URL = 'mongodb://localhost:27017/TopTidings';
+const URL           = 'mongodb://localhost:27017/TopTidings';
 
 //connect with mongoose
 mongoose.connect(process.env.MONGODB_URL || URL, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true});

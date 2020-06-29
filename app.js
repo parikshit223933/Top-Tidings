@@ -4,7 +4,10 @@ const session       = require('express-session');
 const mongoose      = require('mongoose');
 
 const routes        = require("./src/backEnd/routes") //it will automatically take index name file
-const PORT          = process.env.PORT || "5000";
+
+//use dot env file
+require('dotenv').config();
+const PORT = process.env.PORT || "5000";
 
 //connect with Mongo DB
 require('./src/backEnd/config/mongoose');
