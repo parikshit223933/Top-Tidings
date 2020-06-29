@@ -1,17 +1,25 @@
-const User          = require('../models/userModel');
-const bcrypt        = require('bcrypt');
-const jwt           = require('jsonwebtoken');
-const saltRound     = 10;
+const User                      = require('../models/userModel');
+const bcrypt                    = require('bcrypt');
+const jwt                       = require('jsonwebtoken');
+const authValidation    = require('../validations/authValidation');
+const saltRound                 = 10;
 
 require('dotenv').config;
 
 module.exports = {
     register: async (req, res) => {
-        const { name, email, password, confirmedPass } = req.body;
+        //validate user details
+        const errMsg = await authValidation.userRegisterValidation(req.body);
+        if (errMsg.error != null) {
+            return res.status(400).send(errMsg.error.details[0].message);
+        }
 
+        //destructure req.body data
+        const { name, email, password, confirmedPass } = req.body;
+        
         //check if email is unique or not
         const isEmailExist = await User.find({email: email});
-        if(isEmailExist.length > 0) {
+        if (isEmailExist.length > 0) {
             return res.status(401).send("email already exist");
         }
         
@@ -45,6 +53,13 @@ module.exports = {
     },
 
     login: async (req, res) => {
+        //validate user details
+        const errMsg = authValidation.userLoginValidation(req.body);
+        if (errMsg.error != null) {
+            return res.status(400).send(errMsg.error.details[0].message);
+        }
+
+        //destructure req.body details
         const { email, password } = req.body;
 
         //check if email exist
@@ -58,7 +73,7 @@ module.exports = {
             //compare password
             const match = await bcrypt.compare(password, findUser[0].password);
             //if match == true then password matches and user logged in
-            if(match) {
+            if (match) {
                 return res.send("user logged in");
             }
             else {
