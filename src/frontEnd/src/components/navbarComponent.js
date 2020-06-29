@@ -4,9 +4,17 @@ import SearchBar from './searchBarComponent';
 
 const navBarComponent = () => {
     return (
-        <nav className="navbar navbar-expand-lg  bg-primary">
+        <nav className="navbar navbar-expand-lg fixed-top  bg-primary">
             <Link to="/"><span className="navbar-brand">TopTidings</span></Link>
-                <SearchBar />
+            <SearchBar />
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item">
+                    <Link to="/signin" className="nav-link"> Login </Link>
+                </li>
+                <li class="nav-item">
+                    <Link to="/signup" className="nav-link"> Register </Link>
+                </li>
+            </ul>
         </nav>
         
     )

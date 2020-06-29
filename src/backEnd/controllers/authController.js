@@ -4,6 +4,7 @@ const jwt                   = require('jsonwebtoken');
 const authValidation        = require('../validations/authValidation');
 const saltRound             = 10;
 
+//require dotenv file
 require('dotenv').config();
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
         }
 
         //destructure req.body data
-        const { name, email, password, confirmedPass } = req.body;
+        const { name, email, password, confirmPass } = req.body;
         
         //check if email is unique or not
         const isEmailExist = await User.find({email: email});
@@ -24,7 +25,7 @@ module.exports = {
         }
         
         //chk if both password same or not
-        if (password != confirmedPass) {
+        if (password != confirmPass) {
             console.log("password not match");
             return res.status(402).send("password not match");
         }

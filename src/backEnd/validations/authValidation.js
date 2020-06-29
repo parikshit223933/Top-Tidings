@@ -5,7 +5,6 @@ module.exports = {
         const schema = Joi.object({
             name: Joi.string()
                         .max(20)
-                        .alphanum()
                         .required(),
 
             email: Joi.string()
@@ -17,7 +16,7 @@ module.exports = {
                         .max(15)
                         .required(),
 
-            confirmedPass: Joi.ref('password') //matches with password
+            confirmPass: Joi.ref('password') //matches with password
         })
 
         //return if given user registration details matches all req of schema
