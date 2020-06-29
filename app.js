@@ -7,13 +7,13 @@ const routes        = require("./src/backEnd/routes") //it will automatically ta
 const PORT          = process.env.PORT || "5000";
 
 //connect with Mongo DB
-mongoose.connect('mongodb://localhost:27017/TopTidings', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true});
+require('./src/backEnd/config/mongoose');
 
 //create session
 app.use(session(
     {
         name: 'TopTidings',
-        secret: 'mySecret',
+        secret: 'noSecret',
         saveUninitialized: false,
         resave: false,
     }
@@ -30,8 +30,8 @@ app.listen(PORT, (error) =>
 {
     if(error)
     {
-        console.log(`Error in running the server @ port ${PORT}`);
+        console.log(`Error in running server @ port ${PORT}`);
         return;
     }
-    console.log(`Server is running on the port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 })
