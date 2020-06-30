@@ -1,8 +1,7 @@
 const express       = require("express");
 const app           = express();
 const session       = require('express-session');
-const mongoose      = require('mongoose');
-
+const cors          = require('cors'); //for cross-origin request
 const routes        = require("./src/backEnd/routes") //it will automatically take index name file
 
 //use dot env file
@@ -22,13 +21,14 @@ app.use(session(
     }
 ));
 
+app.use(cors()); //enable cors for all requests
 app.use(express.json()); //parse json
 app.use(express.urlencoded({ extended: false }));
 
 //use routes
 app.use('/', routes);
 
-//Listen SERVER
+//Listen server
 app.listen(PORT, (error) =>
 {
     if(error)
