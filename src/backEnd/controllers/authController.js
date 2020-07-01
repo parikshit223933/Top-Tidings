@@ -33,7 +33,10 @@ module.exports = {
         //chk if both password same or not
         if (password != confirmPass) {
             console.log("password not match");
-            return res.status(404).send("password not match");
+            return res.json({
+                status: 404,
+                message: "password not match" 
+            })
         }
         
         //create hash of password
@@ -46,7 +49,28 @@ module.exports = {
                 const newUser = new User({ name: name, email: email, password: hash });
                 await newUser.save();
                 console.log("New User Register", newUser);
-                res.json(newUser);
+                //also log in user and assign jwt token to it
+                try {
+                    //assign jwt token to user
+                    const token = jwt.sign({id: newUser._id}, 
+                                            process.env.TOKEN_SECRET, 
+                                            { expiresIn: '24h' }
+                                        ); 
+                    console.log("user logged in ", newUser, " with token ", token);
+                    return res.json({
+                        status: 200,
+                        message: "user successfully registered",
+                        user: newUser,
+                        jwt: token
+                    })
+                } 
+                catch (err) {
+                    console.log("error in assigning token ", err);
+                    return res.json({
+                        status: 404,
+                        message: "error in assigning code" 
+                    })
+                }
             } 
             catch (err) {
                 console.log("error in saving user to database ", err);
@@ -106,7 +130,12 @@ module.exports = {
                                         { expiresIn: '24h' }
                                     ); 
                 console.log("user logged in ", user, " with token ", token);
-                return res.header("auth_token", token).send(token);
+                return res.json({
+                    status: 200,
+                    message: "user successfully logged in",
+                    user: user,
+                    jwt: token
+                })            
             } 
             catch (err) {
                 console.log("error in assigning token ", err);

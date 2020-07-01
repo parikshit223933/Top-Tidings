@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ShowNews from './showNewsComponent';
-import { homeAction } from '../actions/myAction';
+import { homeAction } from '../actions/getNewsActions';
 
 class homeComponent extends Component {
     //we can initialize state by using constructor

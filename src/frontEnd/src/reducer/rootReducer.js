@@ -1,4 +1,5 @@
 const initState = {
+    currentUser: {},
     headlines: []
 }
   
@@ -29,6 +30,13 @@ const rootReducer = (state = initState, action) => {
         return {
             ...state,
             headlines: action.payload
+        }
+    }
+    else if(action.type === 'LOGIN_USER'){
+        console.log(action.payload);
+        return {
+            ...state,
+            currentUser: action.payload
         }
     }
     

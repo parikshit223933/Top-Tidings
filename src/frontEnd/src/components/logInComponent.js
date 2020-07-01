@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
+import { connect } from "react-redux";
+import { postLogIn } from "../actions/authActions";
 class logInComponent extends Component {
     constructor(props) {
         super(props);
@@ -23,39 +23,8 @@ class logInComponent extends Component {
             email: this.state.email,
             password: this.state.password
         };
-        console.log("Request for log in with ", data);
-        axios.post('http://localhost:5000/signin', data)
-            .then(res => {
-                console.log(res);
-                if (res.data.response !== false && res.data.status !== 404) {
-                    console.log("object", res);
-                    /* const message = res.data.message;
-                    swal({
-                      text: message,
-                      title: "Success",
-                      icon: "success",
-                      closeOnClickOutside: true,
-                      timer: 3000
-                    })
-                    .then(() => {
-                      this.props.history.push("/", true);
-                    }); */
-                  } 
-                  else {
-                    const message = res.data.message;
-                    console.log(message);
-                    /* swal({
-                      text: message,
-                      title: "Error",
-                      icon: "error",
-                      className: "red-bg",
-                      closeOnClickOutside: true,
-                      timer: 3000
-                    }).then(() => {
-                      this.props.history.push("/host");
-                    }); */
-                  }
-            })
+        console.log(data);
+        this.props.LogInPost(data);
     }
     
     render() {
@@ -102,4 +71,8 @@ class logInComponent extends Component {
     }
 }
 
-export default logInComponent;
+const mapDispatchToProps = (dispatch) => ({
+    LogInPost: (userInfo) => dispatch(postLogIn(userInfo))
+})
+
+export default connect(null, mapDispatchToProps)(logInComponent);

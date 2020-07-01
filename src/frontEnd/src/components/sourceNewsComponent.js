@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ShowNews from './showNewsComponent';
-import { sourceAction } from '../actions/myAction';
+import { sourceAction } from '../actions/getNewsActions';
 import { connect } from 'react-redux';
 
 class sourceNewsComponent extends Component {

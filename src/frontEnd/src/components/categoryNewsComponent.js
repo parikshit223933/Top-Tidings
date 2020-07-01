@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { categoryAction } from '../actions/myAction';
+import { categoryAction } from '../actions/getNewsActions';
 import ShowNews from './showNewsComponent';
 
 class categeoryNewsComponent extends Component {

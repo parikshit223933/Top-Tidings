@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import ShowNews from './showNewsComponent';
-import { queryAction } from '../actions/myAction';
+import { queryAction } from '../actions/getNewsActions';
 
 class searchNewsComponent extends Component {
     constructor(props) {
