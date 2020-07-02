@@ -1,7 +1,7 @@
 import axios from 'axios';
 import swal from 'sweetalert';
 
-export const postRegister = (props, data) => {
+export const postRegister = (data, history) => {
     return (dispatch) => {
         axios.post('http://localhost:5000/signup', data)
             .then(res => {
@@ -17,11 +17,11 @@ export const postRegister = (props, data) => {
                         timer: 3000
                     })
                     .then(() => {
-                        this.props.history.push("/", true);
+                        history.push("/", true);
                         localStorage.setItem("token", res.data.jwt);
                         dispatch(logInUser(res.data.user));
                     });
-                } 
+                }
                 else {
                     const message = res.data.message;
                     console.log(message);
@@ -33,14 +33,14 @@ export const postRegister = (props, data) => {
                         closeOnClickOutside: true,
                         timer: 3000
                     }).then(() => {
-                        this.props.history.push("/signup");
+                        history.push("/signup");
                     });
                 }
             })
     }
 }
 
-export const postLogIn = (data) => {
+export const postLogIn = (data, history) => {
     return (dispatch) => {
         axios.post('http://localhost:5000/signin', data)
             .then(res => {
@@ -52,10 +52,10 @@ export const postLogIn = (data) => {
                         title: "Success",
                         icon: "success",
                         closeOnClickOutside: true,
-                        timer: 3000
+                        timer: 2000
                     })
                     .then(() => {
-                        this.props.history.push("/", true);
+                        history.push("/", true);
                         localStorage.setItem("token", res.data.jwt);
                         dispatch(logInUser(res.data.user));
                     });
@@ -69,10 +69,10 @@ export const postLogIn = (data) => {
                         icon: "error",
                         className: "red-bg",
                         closeOnClickOutside: true,
-                        timer: 3000
+                        timer: 2000
                     })
                     .then(() => {
-                        this.props.history.push("/signin");
+                        history.push("/signin");
                     });
                 }
             })

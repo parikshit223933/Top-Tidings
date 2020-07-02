@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { postRegister } from '../actions/authActions';
 
 class registerComponent extends Component {
@@ -28,7 +29,8 @@ class registerComponent extends Component {
             password: this.state.password,
             confirmPass: this.state.confirmPass
         };
-        this.props.registerPost(data);
+        console.log(this.props.history);
+        this.props.registerPost(data, this.props.history);
     }
     
     render() {
@@ -96,7 +98,7 @@ class registerComponent extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    registerPost: (userInfo) => dispatch(postRegister(userInfo))
+    registerPost: (userInfo, history) => dispatch(postRegister(userInfo, history))
 })
 
-export default connect(null, mapDispatchToProps)(registerComponent);
+export default connect(null, mapDispatchToProps)(withRouter(registerComponent));

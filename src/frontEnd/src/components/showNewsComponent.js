@@ -7,7 +7,7 @@ const showNewsComponent = (props) => {
         props.headlines.length ? (
             props.headlines.map(headline => {
                 return(
-                    <div className="col-xl-4 col-sm-6 d-flex align-items-stretch" key="headline.publishedAt">
+                    <div className="col-xl-4 col-sm-6 d-flex align-items-stretch" key="headline.url">
                         <div className="card booking-card">
                             <div className="view overlay">
                                 <img id="indexcardimage" className="card-img-top" src={headline.urlToImage} alt="img" />

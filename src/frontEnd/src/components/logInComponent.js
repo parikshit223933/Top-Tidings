@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { postLogIn } from "../actions/authActions";
+
 class logInComponent extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +26,7 @@ class logInComponent extends Component {
             password: this.state.password
         };
         console.log(data);
-        this.props.LogInPost(data);
+        this.props.LogInPost(data, this.props.history);
     }
     
     render() {
@@ -72,7 +74,7 @@ class logInComponent extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    LogInPost: (userInfo) => dispatch(postLogIn(userInfo))
+    LogInPost: (props, userInfo) => dispatch(postLogIn(props, userInfo))
 })
 
-export default connect(null, mapDispatchToProps)(logInComponent);
+export default connect(null, mapDispatchToProps)(withRouter(logInComponent));
