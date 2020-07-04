@@ -56,13 +56,23 @@ module.exports = {
                                             process.env.TOKEN_SECRET, 
                                             { expiresIn: '24h' }
                                         ); 
-                    console.log("user logged in ", newUser, " with token ", token);
-                    return res.json({
-                        status: 200,
-                        message: "user successfully registered",
-                        user: newUser,
-                        jwt: token
-                    })
+                    try {
+                        passport.authenticate("local")(req, res, function(){
+                            console.log("user logged in ", newUser, " with token ", token);
+                            return res.json({
+                                status: 200,
+                                message: "user successfully registered",
+                                user: newUser,
+                                jwt: token
+                            })
+                        })    
+                    } 
+                    catch (err) {
+                        return res.json({
+                            status: 404,
+                            message: "can't log in right now" 
+                        })
+                    }
                 } 
                 catch (err) {
                     console.log("error in assigning token ", err);

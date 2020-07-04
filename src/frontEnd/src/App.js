@@ -19,7 +19,7 @@ class App extends Component {
                     <Navbar />
                     
                     <Sources />
-
+ 
                     <Categories />
 
                     {/* Switch tag check route one by one and if matches 
@@ -33,7 +33,7 @@ class App extends Component {
                             Eg:- for route /about here both / & /about matches and react open both pages */}
                         
                         <Route path='/signup' component={Register} />
-                        
+                    
                         <Route path='/signin' component={LogIn} />
 
                         <Route path='/search/:query' component={SearchNews} />
