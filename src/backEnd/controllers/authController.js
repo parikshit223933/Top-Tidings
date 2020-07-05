@@ -1,11 +1,10 @@
 const User                  = require('../models/userModel');
 const bcrypt                = require('bcrypt');
+const passport              = require('passport');
 const jwt                   = require('jsonwebtoken');
+const config                = require('../config/index');
 const authValidation        = require('../validations/authValidation');
 const saltRound             = 10;
-
-//require dotenv file
-require('dotenv').config();
 
 module.exports = {
     register: async (req, res) => {
@@ -42,45 +41,16 @@ module.exports = {
         //create hash of password
         try {
             const salt = await bcrypt.genSalt(saltRound);
-            const hash = await bcrypt.hash(password, salt)
+            const hash = await bcrypt.hash(password, salt);
             
             try {
                 //now save user into database
-                const newUser = new User({ name: name, email: email, password: hash });
-                await newUser.save();
+                const newUser = await User.create({ name: name, email: email, password: hash });
                 console.log("New User Register", newUser);
-                //also log in user and assign jwt token to it
-                try {
-                    //assign jwt token to user
-                    const token = jwt.sign({id: newUser._id}, 
-                                            process.env.TOKEN_SECRET, 
-                                            { expiresIn: '24h' }
-                                        ); 
-                    try {
-                        passport.authenticate("local")(req, res, function(){
-                            console.log("user logged in ", newUser, " with token ", token);
-                            return res.json({
-                                status: 200,
-                                message: "user successfully registered",
-                                user: newUser,
-                                jwt: token
-                            })
-                        })    
-                    } 
-                    catch (err) {
-                        return res.json({
-                            status: 404,
-                            message: "can't log in right now" 
-                        })
-                    }
-                } 
-                catch (err) {
-                    console.log("error in assigning token ", err);
-                    return res.json({
-                        status: 404,
-                        message: "error in assigning code" 
-                    })
-                }
+                return res.json({
+                    status: 200,
+                    message: "User successfully registered"
+                })               
             } 
             catch (err) {
                 console.log("error in saving user to database ", err);
@@ -131,21 +101,22 @@ module.exports = {
                     status: 404,
                     message: "password not match" 
                 })
-            }
-            
+            }   
             try {
                 //assign jwt token to user
                 const token = jwt.sign({id: user._id}, 
-                                        process.env.TOKEN_SECRET, 
+                                        config.secretOrKey, 
                                         { expiresIn: '24h' }
                                     ); 
                 console.log("user logged in ", user, " with token ", token);
+                await passport.authenticate('local', {failureRedirect:'/signin'})
+                console.log("check logged in or not", req.user);
                 return res.json({
                     status: 200,
                     message: "user successfully logged in",
                     user: user,
                     jwt: token
-                })            
+                })
             } 
             catch (err) {
                 console.log("error in assigning token ", err);
@@ -162,6 +133,5 @@ module.exports = {
                 message: "error in matching password" 
             })
         }
- 
     } 
 }

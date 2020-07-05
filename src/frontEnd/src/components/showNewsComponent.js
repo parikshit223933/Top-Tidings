@@ -41,7 +41,8 @@ const showNewsComponent = (props) => {
 //take data from redux store to components prop
 const mapStateToProps = (state) => {
     return {
-      headlines: state.headlines
+      headlines: state.headlines,
+      isLoading: state.isLoading
     }
 }
 

@@ -16,7 +16,7 @@ import Redditlogo from '../media/redditLogo.png'
 
 const sourceComponent = () => {
     return (
-        <div className="center">
+        <div className="center display-xs-none">
             <h4>Top Healines from your favourite source</h4>
             <Link to='/source/bbc-news'><img id="left-most-logo" className="logo-img" src={BBClogo} alt="bbc" /></Link>
             <Link to='/source/bloomberg'><img className="logo-img" src={BBlogo} alt="bloomberg" /></Link>

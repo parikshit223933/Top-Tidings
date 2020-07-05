@@ -7,12 +7,16 @@ class categeoryNewsComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            headlines: []
+            headlines: [],
+            isLoading: false
         };
     }
     
     //when component rendered this method will be first evoked 
     componentDidMount(){
+        this.setState({
+            isLoading: true;
+        })
         const ctgName = this.props.match.params.ctg_name;
         this.props.getCategoryNews(ctgName);
     }
@@ -28,6 +32,9 @@ class categeoryNewsComponent extends Component {
     render() {
         return (
             <div className="container categ center">
+                {if(this.state.isLoading == true){
+                    return()
+                }}
                 <h5 className="center">Headlines from {this.props.match.params.ctg_name}</h5>
                 <div class="row">
                     <ShowNews headlines={this.state.headlines} />

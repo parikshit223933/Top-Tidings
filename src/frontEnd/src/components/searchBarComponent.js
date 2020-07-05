@@ -26,7 +26,7 @@ class searchBarComponent extends Component {
     render() {
         return (
             <div>
-                <form   className="form-inline center" 
+                <form   className="form-inline" 
                         action="/search/:query" 
                         onSubmit={this.handleSubmit}
                 >
