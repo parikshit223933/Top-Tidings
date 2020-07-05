@@ -24,7 +24,8 @@ class homeComponent extends Component {
     render() {
         return(
             <div className="container home center">
-                <h5 className="center">Todays Headlines</h5>
+                <br />
+                <h5 className="text-center">Todays Headlines</h5>
                 <div class="row">
                     <ShowNews />
                 </div>

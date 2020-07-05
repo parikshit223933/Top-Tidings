@@ -4,9 +4,9 @@ import { Link, withRouter } from 'react-router-dom'
 const categoriesComponent = (props) => {
     return (
         <div>
-            <div className="center">
-                <br />
-                <h4>Top headlines from your favourite category</h4>
+            <br />
+            <h4 className="text-center d-none d-md-block">Top headlines from your favourite category</h4>
+            <div className="text-center d-none d-md-flex justify-content-between pl-5 pr-5">
                 <Link to='/category/general'><button className="ctg-btn">General</button></Link>
                 <Link to='/category/business'><button className="ctg-btn">Business</button></Link>
                 <Link to='/category/health'><button className="ctg-btn">Health</button></Link>
@@ -16,7 +16,7 @@ const categoriesComponent = (props) => {
                 <Link to='/category/science'><button className="ctg-btn">Science</button></Link>
             </div>
 
-            <div className="container float-right dropdown show">
+            <div className="container float-right dropdown show d-md-none">
                 <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">Categories</button>
 

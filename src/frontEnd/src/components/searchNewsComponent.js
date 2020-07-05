@@ -31,7 +31,8 @@ class searchNewsComponent extends Component {
     render() {
         return (
             <div className="container search">
-                <h5 className="center">Headlines from {this.props.match.params.query}</h5>
+                <br />
+                <h5 className="text-center">Headlines from {this.props.match.params.query}</h5>
                 <div class="row">
                     <ShowNews headlines={this.state.headlines} />
                 </div>

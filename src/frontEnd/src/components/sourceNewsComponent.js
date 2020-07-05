@@ -31,7 +31,8 @@ class sourceNewsComponent extends Component {
     render() {
         return(
             <div className="container sources center">
-                <h5 className="center">Headlines from {this.props.match.params.src_id}</h5>
+                <br />
+                <h5 className="text-center">Headlines from {this.props.match.params.src_id}</h5>
                 <div class="row">
                     <ShowNews headlines={this.state.headlines} />
                 </div>

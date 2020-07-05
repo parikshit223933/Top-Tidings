@@ -17,7 +17,7 @@ import Redditlogo from '../media/redditLogo.png'
 const sourceComponent = () => {
     return (
         <div>
-            <div className="center d-none d-md-block">
+            <div className="center d-none d-md-block text-center">
                 <h4>Top Healines from your favourite source</h4>
                 <Link to='/source/bbc-news'><img id="left-most-logo" className="logo-img" src={BBClogo} alt="bbc" /></Link>
                 <Link to='/source/google-news-in'><img className="logo-img" src={Gnewslogo} alt="google" /></Link>
@@ -33,7 +33,7 @@ const sourceComponent = () => {
                 <Link to='/source/national-geographic'><img className="logo-img" src={NGlogo} alt="natGeo" /></Link>
                 <Link to='/source/mtv-news'><img id="right-most-logo" className="logo-img" src={MTVlogo} alt="MTV" /></Link>
             </div>
-            <div className="container float-left dropdown show">
+            <div className="container float-left dropdown d-md-none d-block mt-5">
                 <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">Sources</button>
 

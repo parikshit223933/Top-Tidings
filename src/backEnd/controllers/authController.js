@@ -104,12 +104,12 @@ module.exports = {
             }   
             try {
                 //assign jwt token to user
-                const token = jwt.sign({id: user._id}, 
+                const token = jwt.sign({ id: user._id }, 
                                         config.secretOrKey, 
                                         { expiresIn: '24h' }
                                     ); 
                 console.log("user logged in ", user, " with token ", token);
-                await passport.authenticate('local', {failureRedirect:'/signin'})
+                await passport.authenticate('jwt', {failureRedirect:'/signin'})
                 console.log("check logged in or not", req.user);
                 return res.json({
                     status: 200,
