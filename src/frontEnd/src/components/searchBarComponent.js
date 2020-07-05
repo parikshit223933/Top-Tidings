@@ -25,21 +25,19 @@ class searchBarComponent extends Component {
 
     render() {
         return (
-            <div>
-                <form   className="form-inline" 
-                        action="/search/:query" 
-                        onSubmit={this.handleSubmit}
-                >
-                    <div className="searchBar">
-                        <input  type="text" 
-                                placeholder="Search Latest News" 
-                                className="form-control"
-                                onChange={this.handleChange}
-                                value={this.state.query}
-                        />
-                    </div>
-                </form>
-            </div>
+            <form   className="form-inline my-2 my-lg-0 ml-auto" 
+                    action="/search/:query" 
+                    onSubmit={this.handleSubmit}
+            >
+                <div className="searchBar">
+                    <input  type="text" 
+                            placeholder="Search Latest News" 
+                            className="form-control"
+                            onChange={this.handleChange}
+                            value={this.state.query}
+                    />
+                </div>
+            </form>
         );
     }
 }
