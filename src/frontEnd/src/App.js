@@ -16,7 +16,7 @@ import SourceNews from './components/sourceNewsComponent'
 import CategoryNews from './components/categoryNewsComponent'
 import SearchNews from './components/searchNewsComponent'
 
-// Check for token to keep user logged in
+/* // Check for token to keep user logged in
 if (localStorage.jwtToken) {
     // Set auth token header auth
     const token = localStorage.jwtToken;
@@ -31,7 +31,7 @@ if (localStorage.jwtToken) {
       store.dispatch(logoutUser());    // Redirect to login
       window.location.href = "./login";
     }
-}
+} */
 
 class App extends Component {
     render() {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ShowNews from './showNewsComponent';
-import { sourceAction } from '../actions/getNewsActions';
 import { connect } from 'react-redux';
+import ShowNews from './showNewsComponent';
+import { isLoadingAction } from '../actions/getNewsActions';
+import { sourceAction } from '../actions/getNewsActions';
 
 class sourceNewsComponent extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class sourceNewsComponent extends Component {
 
     //when component rendered this method will be first evoked 
     componentDidMount(){
+        this.props.isLoadingNews();
         const srcID = this.props.match.params.src_id;
         this.props.getSourceNews(srcID);
     }
@@ -20,6 +22,7 @@ class sourceNewsComponent extends Component {
     //if component is already mounted and only route parameter change 
     componentWillReceiveProps(nextProps){
         if(this.props.match.params.src_id !== nextProps.match.params.src_id){
+            this.props.isLoadingNews();
             const srcID = nextProps.match.params.src_id;
             this.props.getSourceNews(srcID);
         }
@@ -39,6 +42,7 @@ class sourceNewsComponent extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+      isLoadingNews: () => dispatch(isLoadingAction()),
       getSourceNews: (srcID) => dispatch(sourceAction(srcID))
     }
 }

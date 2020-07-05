@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { isLoadingAction } from '../actions/getNewsActions';
 import { categoryAction } from '../actions/getNewsActions';
 import ShowNews from './showNewsComponent';
 
@@ -7,22 +8,20 @@ class categeoryNewsComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            headlines: [],
-            isLoading: false
+            headlines: []
         };
     }
     
     //when component rendered this method will be first evoked 
     componentDidMount(){
-        this.setState({
-            isLoading: true;
-        })
+        this.props.isLoadingNews();
         const ctgName = this.props.match.params.ctg_name;
         this.props.getCategoryNews(ctgName);
     }
 
     //if component is already mounted and only route parameter change 
     componentWillReceiveProps(nextProps) {
+        this.props.isLoadingNews();
         if(this.props.match.params.ctg_name !== nextProps.match.params.ctg_name) {
             const ctgName = nextProps.match.params.ctg_name;
             this.props.getCategoryNews(ctgName);
@@ -32,9 +31,6 @@ class categeoryNewsComponent extends Component {
     render() {
         return (
             <div className="container categ center">
-                {if(this.state.isLoading == true){
-                    return()
-                }}
                 <h5 className="center">Headlines from {this.props.match.params.ctg_name}</h5>
                 <div class="row">
                     <ShowNews headlines={this.state.headlines} />
@@ -46,6 +42,7 @@ class categeoryNewsComponent extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+      isLoadingNews: () => dispatch(isLoadingAction()),
       getCategoryNews: (ctg) => dispatch(categoryAction(ctg))
     }
 }

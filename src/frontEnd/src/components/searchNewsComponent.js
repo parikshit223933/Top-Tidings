@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import ShowNews from './showNewsComponent';
+import { isLoadingAction } from '../actions/getNewsActions';
 import { queryAction } from '../actions/getNewsActions';
 
 class searchNewsComponent extends Component {
@@ -13,6 +14,7 @@ class searchNewsComponent extends Component {
 
     //when component rendered this method will be first evoked 
     componentDidMount(){
+        this.props.isLoadingNews();
         const query = this.props.match.params.query;
         this.props.getQueryNews(query);
     }
@@ -20,6 +22,7 @@ class searchNewsComponent extends Component {
     //if component is already mounted and only route parameter change 
     componentWillReceiveProps(nextProps){
         if(this.props.match.params.query !== nextProps.match.params.query){
+            this.props.isLoadingNews();
             const query = nextProps.match.params.query;
             this.props.getQueryNews(query);
         }
@@ -39,6 +42,7 @@ class searchNewsComponent extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+      isLoadingNews: () => dispatch(isLoadingAction()),
       getQueryNews: (query) => dispatch(queryAction(query))
     }
 }

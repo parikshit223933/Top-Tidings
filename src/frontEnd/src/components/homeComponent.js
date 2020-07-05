@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ShowNews from './showNewsComponent';
+import { isLoadingAction } from '../actions/getNewsActions';
 import { homeAction } from '../actions/getNewsActions';
 
 class homeComponent extends Component {
@@ -15,6 +16,7 @@ class homeComponent extends Component {
     }
     // didMount first execute when component created
     componentDidMount(){
+        this.props.isLoadingNews();
         console.log(this.props.getHomeNews())
         this.props.getHomeNews();
     } 
@@ -33,6 +35,7 @@ class homeComponent extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+      isLoadingNews: () => dispatch(isLoadingAction()),
       getHomeNews: () => dispatch(homeAction())
     }
 }

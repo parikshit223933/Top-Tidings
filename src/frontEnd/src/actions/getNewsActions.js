@@ -1,5 +1,11 @@
 import axios from 'axios';  
 
+export const isLoadingAction = () => {
+    return (dispatch) => {
+        dispatch({ type: 'IS_LOADING' })
+    }
+}
+
 export const homeAction = () => {
     return (dispatch) => {
         axios.get(`https://newsapi.org/v2/top-headlines?country=in&apiKey=2f18a46c3eea4f1fb7380121f6d42f55`)

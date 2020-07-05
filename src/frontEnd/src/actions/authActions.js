@@ -56,10 +56,10 @@ export const postLogIn = (data, history) => {
                     })
                     .then(() => {
                         localStorage.setItem("token", res.data.jwt);
-                        // Set token to Auth header
+                        /* // Set token to Auth header
                         setAuthToken(token);
                         // Decode token to get user data
-                        const decoded = jwt_decode(token);
+                        const decoded = jwt_decode(token); */
                         history.push("/", true);
                         dispatch(logInUser(res.data.user));
                     });
