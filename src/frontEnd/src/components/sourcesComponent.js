@@ -20,21 +20,39 @@ const sourceComponent = () => {
             <div className="center d-none d-md-block">
                 <h4>Top Healines from your favourite source</h4>
                 <Link to='/source/bbc-news'><img id="left-most-logo" className="logo-img" src={BBClogo} alt="bbc" /></Link>
-                <Link to='/source/bloomberg'><img className="logo-img" src={BBlogo} alt="bloomberg" /></Link>
-                <Link to='/source/time'><img className="logo-img" src={TIMElogo} alt="TIME" /></Link>
-                <Link to='/source/cnn'><img className="logo-img" src={CNNlogo} alt="CNN" /></Link>
-                <Link to='/source/fox-news'><img className="logo-img" src={FOXlogo} alt="FOX" /></Link>
                 <Link to='/source/google-news-in'><img className="logo-img" src={Gnewslogo} alt="google" /></Link>
                 <Link to='/source/the-hindu'><img className="logo-img" src={Hindulogo} alt="hindu" /></Link>
                 <Link to='/source/the-times-of-india'><img className="logo-img" src={TOIlogo} alt="TOI" /></Link>
+                <Link to='/source/fox-news'><img className="logo-img" src={FOXlogo} alt="FOX" /></Link>
+                <Link to='/source/time'><img className="logo-img" src={TIMElogo} alt="TIME" /></Link>
                 <Link to='/source/fortune'><img className="logo-img" src={Fortunelogo} alt="fortune" /></Link>
+                <Link to='/source/cnn'><img className="logo-img" src={CNNlogo} alt="CNN" /></Link>
                 <Link to='/source/espn'><img className="logo-img" src={ESPNlogo} alt="espn" /></Link>
-                <Link to='/source/national-geographic'><img className="logo-img" src={NGlogo} alt="natGeo" /></Link>
                 <Link to='/source/reddit-r-all'><img className="logo-img" src={Redditlogo} alt="reddit" /></Link>
+                <Link to='/source/bloomberg'><img className="logo-img" src={BBlogo} alt="bloomberg" /></Link>
+                <Link to='/source/national-geographic'><img className="logo-img" src={NGlogo} alt="natGeo" /></Link>
                 <Link to='/source/mtv-news'><img id="right-most-logo" className="logo-img" src={MTVlogo} alt="MTV" /></Link>
             </div>
-            <div className="center hidden-md-up">
-                <h4>SMALL </h4>
+            <div className="container float-left dropdown show">
+                <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Sources</button>
+
+                <div class="dropdown-menu hidden-md-up">
+                    <Link to='/source/bbc-news' className="dropdown-item">BBC News</Link>
+                    <Link to='/source/google-news-in' className="dropdown-item">Google News In</Link>
+                    <Link to='/source/the-hindu' className="dropdown-item">The Hindu</Link>
+                    <Link to='/source/the-times-of-india' className="dropdown-item">The Times Of India</Link>
+                    <Link to='/source/fox-news' className="dropdown-item">Fox News</Link>
+                    <Link to='/source/time' className="dropdown-item">Time News</Link>
+                    <Link to='/source/fortune' className="dropdown-item">Fortune</Link>
+                    <Link to='/source/cnn' className="dropdown-item">CNN News</Link>
+                    <Link to='/source/espn' className="dropdown-item">ESPN</Link>
+                    <Link to='/source/reddit-r-all' className="dropdown-item">Reddit</Link>
+                    <Link to='/source/bloomberg' className="dropdown-item">Bloomberg</Link>
+                    <Link to='/source/national-geographic' className="dropdown-item">National Geography</Link>
+                    <Link to='/source/mtv-news' className="dropdown-item">MTV News</Link>
+                    <div class="dropdown-divider"></div>
+                </div>
             </div>
         </div>
     );
