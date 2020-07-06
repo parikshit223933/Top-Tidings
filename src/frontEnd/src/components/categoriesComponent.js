@@ -12,28 +12,42 @@ const categoriesComponent = (props) => {
 
 				<div className="d-none d-md-flex justify-content-between sources-expanded-container ml-5 mr-5">
 					<Link to="/category/general" className="category-link">
-						<button className="ctg-btn">General</button>
+						<button type="button" className="btn btn-dark hoverer">
+							General
+						</button>
 					</Link>
 					<Link to="/category/business" className="category-link">
-						<button className="ctg-btn">Business</button>
+						<button type="button" className="btn btn-dark hoverer">
+							Business
+						</button>
 					</Link>
 					<Link to="/category/health" className="category-link">
-						<button className="ctg-btn">Health</button>
+						<button type="button" className="btn btn-dark hoverer">
+							Health
+						</button>
 					</Link>
 					<Link to="/category/sports" className="category-link">
-						<button className="ctg-btn">Sports</button>
+						<button type="button" className="btn btn-dark hoverer">
+							Sports
+						</button>
 					</Link>
 					<Link to="/category/technology" className="category-link">
-						<button className="ctg-btn">Technology</button>
+						<button type="button" className="btn btn-dark hoverer">
+							Technology
+						</button>
 					</Link>
 					<Link
 						to="/category/entertainment"
 						className="category-link"
 					>
-						<button className="ctg-btn">Entertainment</button>
+						<button type="button" className="btn btn-dark hoverer">
+							Entertainment
+						</button>
 					</Link>
 					<Link to="/category/science" className="category-link">
-						<button className="ctg-btn">Science</button>
+						<button type="button" className="btn btn-dark hoverer">
+							Science
+						</button>
 					</Link>
 				</div>
 			</div>

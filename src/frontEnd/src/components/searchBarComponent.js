@@ -38,8 +38,8 @@ class searchBarComponent extends Component {
 					value={this.state.query}
 					style={{ borderRadius: "20px" }}
 				/>
-				<button type="button" type="submit" class="btn btn-success">
-					<i class="fas fa-search"></i> Search
+				<button type="button" type="submit" className="btn btn-success">
+					<i className="fas fa-search"></i> Search
 				</button>
 			</form>
 		);
