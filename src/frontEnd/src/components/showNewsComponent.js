@@ -7,21 +7,21 @@ const showNewsComponent = (props) => {
 	return props.isLoading ? (
 		<Spinner />
 	) : props.headlines.length ? (
-		props.headlines.map((headline) => {
+		props.headlines.map((headline, index) => {
 			return (
 				<div
 					className="col-xl-4 col-sm-6 d-flex align-items-stretch"
-					key="headline.url"
+					key={index}
 				>
 					<div className="card booking-card">
 						<div className="view overlay card-container">
 							{/* SHARE ICON */}
 							<div className="share-icon">
-								<i class="fas fa-share-alt"></i>
+								<i className="fas fa-share-alt"></i>
 							</div>
 							{/* BOOKMARK ICON */}
 							<div className="bookmark-icon">
-								<i class="far fa-bookmark"></i>
+								<i className="far fa-bookmark"></i>
 							</div>
 							<img
 								id="indexcardimage"
