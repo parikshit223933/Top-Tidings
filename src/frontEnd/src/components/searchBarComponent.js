@@ -33,15 +33,13 @@ class searchBarComponent extends Component {
 				<input
 					type="search"
 					placeholder="Search Latest News"
-					className="form-control mr-sm-2"
+					className="form-control mr-sm-2 pl-3"
 					onChange={this.handleChange}
 					value={this.state.query}
+					style={{ borderRadius: "20px" }}
 				/>
-				<button
-					className="btn btn-outline-success my-2 my-sm-0"
-					type="submit"
-				>
-					Search
+				<button type="button" type="submit" class="btn btn-success">
+					<i class="fas fa-search"></i> Search
 				</button>
 			</form>
 		);
