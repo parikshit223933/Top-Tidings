@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 const categoriesComponent = (props) => {
     return (
-        <div>
+        <div className = "container">
             <br />
             <h4 className="text-center d-none d-md-block">Top headlines from your favourite category</h4>
             <div className="text-center d-none d-md-flex justify-content-between pl-5 pr-5">

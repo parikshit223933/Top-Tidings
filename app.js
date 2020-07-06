@@ -35,7 +35,7 @@ app.use(session(
             },
             function(error)
             {
-                console.log(error||'Connect mongo Setup is working fine!');
+                console.log(error || 'Connect mongo Setup is working fine!');
             }
         )
     }
